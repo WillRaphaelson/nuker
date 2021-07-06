@@ -1,0 +1,2 @@
+twilio==6.30.0
+slack-cleaner2==3.0.6
