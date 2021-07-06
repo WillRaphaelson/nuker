@@ -9,7 +9,7 @@ def instantiate_slack_client():
     sc = SlackCleaner(api_key)
     return sc
 
-def nuke_channel(sc, channel="nuker-testing", date_to_nuke_before="2021-07-03"):
+def nuke_channel(sc, channel="announcements", date_to_nuke_before="2021-07-01"): # change these
     date_intermediate = datetime.datetime.strptime(date_to_nuke_before, "%Y-%m-%d")
     date_to_nuke_before_unix = date = datetime.datetime.timestamp(date_intermediate)
     for msg in sc.msgs(filter(match(channel), sc.conversations)):
@@ -20,7 +20,7 @@ def nuke_channel(sc, channel="nuker-testing", date_to_nuke_before="2021-07-03"):
     return
 
 def notify_via_text(message="nuker failed, check it out"):
-    phones_list = ["+19175493139"]
+    phones_list = ["+19175493139"] # change this
     # Your Account Sid and Auth Token from twilio.com/console
     # and set the environment variables. See http://twil.io/secure
     account_sid = os.getenv("TWILIO_SID")
