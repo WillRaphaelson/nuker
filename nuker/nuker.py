@@ -11,7 +11,7 @@ def instantiate_slack_client():
 
 def nuke_channel(sc, channel="announcements", date_to_nuke_before="2021-07-01"): # change these
     date_intermediate = datetime.datetime.strptime(date_to_nuke_before, "%Y-%m-%d")
-    date_to_nuke_before_unix = date = datetime.datetime.timestamp(date_intermediate)
+    date_to_nuke_before_unix = datetime.datetime.timestamp(date_intermediate)
     for msg in sc.msgs(filter(match(channel), sc.conversations)):
         ts = float(str(msg).partition(":")[2].split()[0])
         if ts < date_to_nuke_before_unix:
